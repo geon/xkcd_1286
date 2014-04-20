@@ -1,0 +1,51 @@
+<form method="POST">
+	<ul class="password-list">
+		{{#each data.singles}}
+			<li>
+				<input class="form-control" name="{{crypt}}" value="">
+				<p class="hints">
+					{{#each hints}}
+						<span>{{.}}</span>
+					{{/each}}
+				</p>
+			</li>
+		{{/each}}
+		{{#each data.doubles}}
+			<li>
+				<input class="form-control" name="{{first}}" value="">
+				<input class="form-control" name="{{second}}" value="">
+				<p class="hints">
+					{{#each hints}}
+						<span>{{.}}</span>
+					{{/each}}
+				</p>
+			</li>
+		{{/each}}
+		{{#each data.partials}}
+			<li>
+				{{#if firstSolved}}
+					<a href="{{first}}">{{firstSolved}}</a>
+					<input class="form-control" name="{{second}}" value="">
+				{{/if}}
+				{{#if secondSolved}}
+					<input class="form-control" name="{{first}}" value="">
+					<a href="{{second}}">{{secondSolved}}</a>
+				{{/if}}
+				<p class="hints">
+					{{#each hints}}
+						<span><a href="https://www.google.com/search?q={{.}}">{{.}}</a></span>
+					{{/each}}
+				</p>
+			</li>
+		{{/each}}
+	</ul>
+	<button type="submit">Solved!</button>
+</form>
+
+<script src="js/vendor/jquery-1.10.1.min.js"></script>
+<script src="js/vendor/bootstrap.min.js"></script>
+
+<script src="js/PasswordPiece.js"></script>
+<script src="js/UnsolvedPiecesListView.js"></script>
+<script src="js/App.js"></script>
+<script src="js/main.js"></script>
